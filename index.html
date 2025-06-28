@@ -18,7 +18,14 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.2/font/bootstrap-icons.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css">
+    
+    <!-- Main Styles -->
     <link href="assets/css/style.css" rel="stylesheet">
+    <!-- Modern Enhancements -->
+    <link href="assets/css/modern-enhancements.css" rel="stylesheet">
+    <link href="assets/css/cursor-effects.css" rel="stylesheet">
+    <link href="assets/css/loading-animations.css" rel="stylesheet">
+    <link href="assets/css/responsive-enhancements.css" rel="stylesheet">
     
     <!-- Meta tags for SEO -->
     <meta name="description" content="Computer Engineering Students Association at ISBM College of Engineering - Empowering future tech leaders through innovation and collaboration.">
@@ -31,7 +38,16 @@
     <meta property="og:image" content="assets/images/cesa-logo.png">
     <meta property="og:type" content="website">
 </head>
-<body>
+<body class="loading">
+    <!-- Loading Overlay -->
+    <div class="loading-overlay" id="loadingOverlay">
+        <div class="loading-spinner"></div>
+    </div>
+
+    <!-- Custom Cursor -->
+    <div class="custom-cursor"></div>
+    <div class="cursor-follower"></div>
+
     <!-- Navigation -->
     <nav class="navbar navbar-expand-lg navbar-dark fixed-top">
         <div class="container">
@@ -54,13 +70,13 @@
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav ms-auto">
                     <li class="nav-item">
-                        <a class="nav-link active" href="index.html" aria-current="page">
+                        <a class="nav-link active interactive-element" href="index.html" aria-current="page">
                             <i class="bi bi-house-door"></i>
                             <span>Home</span>
                         </a>
                     </li>
                     <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" id="aboutDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        <a class="nav-link dropdown-toggle interactive-element" href="#" id="aboutDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                             <i class="bi bi-info-circle"></i>
                             <span>About Us</span>
                         </a>
@@ -71,37 +87,37 @@
                         </ul>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="pages/events.html">
+                        <a class="nav-link interactive-element" href="pages/events.html">
                             <i class="bi bi-calendar-event"></i>
                             <span>Events</span>
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="pages/team.html">
+                        <a class="nav-link interactive-element" href="pages/team.html">
                             <i class="bi bi-people"></i>
                             <span>Team</span>
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="pages/gallery.html">
+                        <a class="nav-link interactive-element" href="pages/gallery.html">
                             <i class="bi bi-images"></i>
                             <span>Gallery</span>
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="pages/verify.html">
+                        <a class="nav-link interactive-element" href="pages/verify.html">
                             <i class="bi bi-award"></i>
                             <span>Certificates</span>
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="pages/contact.html">
+                        <a class="nav-link interactive-element" href="pages/contact.html">
                             <i class="bi bi-envelope"></i>
                             <span>Contact Us</span>
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link login-link" href="pages/login.html">
+                        <a class="nav-link login-link interactive-element" href="pages/login.html">
                             <i class="bi bi-box-arrow-in-right"></i>
                             <span>Login</span>
                         </a>
@@ -115,21 +131,21 @@
     <section class="hero-section">
         <div class="container">
             <div class="row align-items-center min-vh-100">
-                <div class="col-lg-6" data-aos="fade-right" data-aos-duration="800">
+                <div class="col-lg-6 animate-on-load" data-aos="fade-right" data-aos-duration="800">
                     <h1 class="display-4 fw-bold mb-4">Welcome to <span class="text-gradient">CESA</span></h1>
                     <p class="lead mb-4">Empowering Computer Engineering Students at ISBM College of Engineering through innovation, collaboration, and excellence in technology education.</p>
                     <div class="d-flex flex-wrap gap-3">
-                        <a href="pages/about.html" class="btn btn-primary btn-lg">
+                        <a href="pages/about.html" class="btn btn-primary btn-lg interactive-element">
                             <i class="bi bi-rocket-takeoff"></i>
                             Explore CESA
                         </a>
-                        <a href="pages/events.html" class="btn btn-outline-primary btn-lg">
+                        <a href="pages/events.html" class="btn btn-outline-primary btn-lg interactive-element">
                             <i class="bi bi-calendar-event"></i>
                             View Events
                         </a>
                     </div>
                 </div>
-                <div class="col-lg-6" data-aos="fade-left" data-aos-duration="800" data-aos-delay="200">
+                <div class="col-lg-6 animate-on-load" data-aos="fade-left" data-aos-duration="800" data-aos-delay="200">
                     <div class="hero-image-container float-animation">
                         <img src="assets/images/hero.png" alt="CESA Hero" class="img-fluid">
                     </div>
@@ -142,7 +158,7 @@
     <section class="py-5 bg-gradient">
         <div class="container">
             <div class="row align-items-center">
-                <div class="col-lg-6" data-aos="fade-right" data-aos-duration="800">
+                <div class="col-lg-6 animate-on-scroll" data-aos="fade-right" data-aos-duration="800">
                     <div class="pe-lg-4">
                         <h2 class="section-title">Computer Engineering Students Association</h2>
                         <p class="lead text-gradient mb-4">Empowering Future Tech Leaders</p>
@@ -175,13 +191,13 @@
                                 </div>
                             </div>
                         </div>
-                        <a href="pages/about.html" class="btn btn-primary btn-lg">
+                        <a href="pages/about.html" class="btn btn-primary btn-lg interactive-element">
                             <i class="bi bi-arrow-right-circle me-2"></i>
                             Learn More About CESA
                         </a>
                     </div>
                 </div>
-                <div class="col-lg-6" data-aos="fade-left" data-aos-duration="800" data-aos-delay="200">
+                <div class="col-lg-6 animate-on-scroll" data-aos="fade-left" data-aos-duration="800" data-aos-delay="200">
                     <div class="text-center">
                         <img src="assets/images/hero2.png" alt="CESA Overview" class="img-fluid rounded-4 shadow-lg">
                     </div>
@@ -193,26 +209,26 @@
     <!-- Statistics Section -->
     <section class="py-5">
         <div class="container">
-            <div class="row text-center">
-                <div class="col-lg-3 col-md-6 mb-4" data-aos="fade-up" data-aos-duration="800">
+            <div class="row text-center stagger-animation">
+                <div class="col-lg-3 col-md-6 mb-4 animate-on-scroll" data-aos="fade-up" data-aos-duration="800">
                     <div class="stat-card glow-effect">
                         <h3>50+</h3>
                         <p>Active Members</p>
                     </div>
                 </div>
-                <div class="col-lg-3 col-md-6 mb-4" data-aos="fade-up" data-aos-duration="800" data-aos-delay="100">
+                <div class="col-lg-3 col-md-6 mb-4 animate-on-scroll" data-aos="fade-up" data-aos-duration="800" data-aos-delay="100">
                     <div class="stat-card glow-effect">
                         <h3>15+</h3>
                         <p>Events Organized</p>
                     </div>
                 </div>
-                <div class="col-lg-3 col-md-6 mb-4" data-aos="fade-up" data-aos-duration="800" data-aos-delay="200">
+                <div class="col-lg-3 col-md-6 mb-4 animate-on-scroll" data-aos="fade-up" data-aos-duration="800" data-aos-delay="200">
                     <div class="stat-card glow-effect">
                         <h3>5+</h3>
                         <p>Industry Partners</p>
                     </div>
                 </div>
-                <div class="col-lg-3 col-md-6 mb-4" data-aos="fade-up" data-aos-duration="800" data-aos-delay="300">
+                <div class="col-lg-3 col-md-6 mb-4 animate-on-scroll" data-aos="fade-up" data-aos-duration="800" data-aos-delay="300">
                     <div class="stat-card glow-effect">
                         <h3>500+</h3>
                         <p>Certificates Issued</p>
@@ -226,12 +242,12 @@
     <section class="py-5 bg-gradient">
         <div class="container">
             <div class="text-center mb-5">
-                <h2 class="section-title" data-aos="fade-up">Our Events</h2>
-                <p class="lead text-muted" data-aos="fade-up" data-aos-delay="100">Discover the exciting events that shape our community</p>
+                <h2 class="section-title animate-on-scroll" data-aos="fade-up">Our Events</h2>
+                <p class="lead text-muted animate-on-scroll" data-aos="fade-up" data-aos-delay="100">Discover the exciting events that shape our community</p>
             </div>
             <div class="row g-4">
-                <div class="col-lg-4 col-md-6" data-aos="zoom-in" data-aos-duration="800">
-                    <div class="event-card">
+                <div class="col-lg-4 col-md-6 animate-on-scroll" data-aos="zoom-in" data-aos-duration="800">
+                    <div class="event-card interactive-element">
                         <div class="event-icon text-center mb-4">
                             <i class="bi bi-code-slash display-1 text-primary"></i>
                         </div>
@@ -239,8 +255,8 @@
                         <p class="text-center">24-hour coding competitions to solve real-world problems using cutting-edge technologies and innovative solutions.</p>
                     </div>
                 </div>
-                <div class="col-lg-4 col-md-6" data-aos="zoom-in" data-aos-duration="800" data-aos-delay="100">
-                    <div class="event-card">
+                <div class="col-lg-4 col-md-6 animate-on-scroll" data-aos="zoom-in" data-aos-duration="800" data-aos-delay="100">
+                    <div class="event-card interactive-element">
                         <div class="event-icon text-center mb-4">
                             <i class="bi bi-laptop display-1 text-primary"></i>
                         </div>
@@ -248,8 +264,8 @@
                         <p class="text-center">Hands-on technical workshops on emerging technologies like AI, ML, IoT, and modern development frameworks.</p>
                     </div>
                 </div>
-                <div class="col-lg-4 col-md-6" data-aos="zoom-in" data-aos-duration="800" data-aos-delay="200">
-                    <div class="event-card">
+                <div class="col-lg-4 col-md-6 animate-on-scroll" data-aos="zoom-in" data-aos-duration="800" data-aos-delay="200">
+                    <div class="event-card interactive-element">
                         <div class="event-icon text-center mb-4">
                             <i class="bi bi-people display-1 text-primary"></i>
                         </div>
@@ -258,8 +274,8 @@
                     </div>
                 </div>
             </div>
-            <div class="text-center mt-5" data-aos="fade-up" data-aos-delay="300">
-                <a href="pages/events.html" class="btn btn-primary btn-lg">
+            <div class="text-center mt-5 animate-on-scroll" data-aos="fade-up" data-aos-delay="300">
+                <a href="pages/events.html" class="btn btn-primary btn-lg interactive-element">
                     <i class="bi bi-calendar-event me-2"></i>
                     View All Events
                 </a>
@@ -271,54 +287,54 @@
     <section class="py-5">
         <div class="container">
             <div class="text-center mb-5">
-                <h2 class="section-title" data-aos="fade-up">Our Leadership</h2>
-                <p class="lead text-muted" data-aos="fade-up" data-aos-delay="100">Meet the dedicated individuals who drive CESA forward</p>
+                <h2 class="section-title animate-on-scroll" data-aos="fade-up">Our Leadership</h2>
+                <p class="lead text-muted animate-on-scroll" data-aos="fade-up" data-aos-delay="100">Meet the dedicated individuals who drive CESA forward</p>
             </div>
             <div class="row g-4">
-                <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-duration="800">
-                    <div class="team-card">
+                <div class="col-lg-4 col-md-6 animate-on-scroll" data-aos="fade-up" data-aos-duration="800">
+                    <div class="team-card interactive-element">
                         <div class="team-image">
                             <img src="assets/images/faculty/Vilas-Joshi.jpg" alt="Faculty Coordinator" class="img-fluid">
                         </div>
                         <h4>Dr. Vilas R. Joshi</h4>
                         <p>Associate Professor & CESA Faculty Coordinator</p>
                         <div class="social-links">
-                            <a href="#" aria-label="LinkedIn"><i class="bi bi-linkedin"></i></a>
-                            <a href="#" aria-label="Email"><i class="bi bi-envelope"></i></a>
+                            <a href="#" aria-label="LinkedIn" class="interactive-element"><i class="bi bi-linkedin"></i></a>
+                            <a href="#" aria-label="Email" class="interactive-element"><i class="bi bi-envelope"></i></a>
                         </div>
                     </div>
                 </div>
-                <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-duration="800" data-aos-delay="100">
-                    <div class="team-card">
+                <div class="col-lg-4 col-md-6 animate-on-scroll" data-aos="fade-up" data-aos-duration="800" data-aos-delay="100">
+                    <div class="team-card interactive-element">
                         <div class="team-image">
                             <img src="assets/images/core/vedanth.jpg" alt="President" class="img-fluid">
                         </div>
                         <h4>Vedanth Bakwad</h4>
                         <p>President</p>
                         <div class="social-links">
-                            <a href="#" aria-label="LinkedIn"><i class="bi bi-linkedin"></i></a>
-                            <a href="#" aria-label="GitHub"><i class="bi bi-github"></i></a>
-                            <a href="#" aria-label="Email"><i class="bi bi-envelope"></i></a>
+                            <a href="#" aria-label="LinkedIn" class="interactive-element"><i class="bi bi-linkedin"></i></a>
+                            <a href="#" aria-label="GitHub" class="interactive-element"><i class="bi bi-github"></i></a>
+                            <a href="#" aria-label="Email" class="interactive-element"><i class="bi bi-envelope"></i></a>
                         </div>
                     </div>
                 </div>
-                <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-duration="800" data-aos-delay="200">
-                    <div class="team-card">
+                <div class="col-lg-4 col-md-6 animate-on-scroll" data-aos="fade-up" data-aos-duration="800" data-aos-delay="200">
+                    <div class="team-card interactive-element">
                         <div class="team-image">
                             <img src="assets/images/core/gaurav.jpeg" alt="Vice President" class="img-fluid">
                         </div>
                         <h4>Gaurav Singh</h4>
                         <p>Vice President</p>
                         <div class="social-links">
-                            <a href="#" aria-label="LinkedIn"><i class="bi bi-linkedin"></i></a>
-                            <a href="#" aria-label="GitHub"><i class="bi bi-github"></i></a>
-                            <a href="#" aria-label="Email"><i class="bi bi-envelope"></i></a>
+                            <a href="#" aria-label="LinkedIn" class="interactive-element"><i class="bi bi-linkedin"></i></a>
+                            <a href="#" aria-label="GitHub" class="interactive-element"><i class="bi bi-github"></i></a>
+                            <a href="#" aria-label="Email" class="interactive-element"><i class="bi bi-envelope"></i></a>
                         </div>
                     </div>
                 </div>
             </div>
-            <div class="text-center mt-5" data-aos="fade-up" data-aos-delay="300">
-                <a href="pages/team.html" class="btn btn-primary btn-lg">
+            <div class="text-center mt-5 animate-on-scroll" data-aos="fade-up" data-aos-delay="300">
+                <a href="pages/team.html" class="btn btn-primary btn-lg interactive-element">
                     <i class="bi bi-people me-2"></i>
                     Meet Our Full Team
                 </a>
@@ -330,45 +346,45 @@
     <section class="partners-section py-5">
         <div class="container">
             <div class="text-center mb-5">
-                <h2 class="section-title" data-aos="fade-up">Our Partners</h2>
-                <p class="lead text-muted" data-aos="fade-up" data-aos-delay="100">Collaborating with industry leaders and academic institutions</p>
+                <h2 class="section-title animate-on-scroll" data-aos="fade-up">Our Partners</h2>
+                <p class="lead text-muted animate-on-scroll" data-aos="fade-up" data-aos-delay="100">Collaborating with industry leaders and academic institutions</p>
             </div>
             
-            <div class="row g-4 justify-content-center align-items-center" data-aos="fade-up" data-aos-delay="200">
+            <div class="row g-4 justify-content-center align-items-center animate-on-scroll" data-aos="fade-up" data-aos-delay="200">
                 <div class="col-lg-2 col-md-3 col-sm-4 col-6">
-                    <div class="partner-logo">
+                    <div class="partner-logo interactive-element">
                         <img src="assets/images/partners/tpc.png" alt="TPC" class="img-fluid">
                     </div>
                 </div>
                 <div class="col-lg-2 col-md-3 col-sm-4 col-6">
-                    <div class="partner-logo">
+                    <div class="partner-logo interactive-element">
                         <img src="assets/images/partners/Technical.jpg" alt="Technical Club" class="img-fluid">
                     </div>
                 </div>
                 <div class="col-lg-2 col-md-3 col-sm-4 col-6">
-                    <div class="partner-logo">
+                    <div class="partner-logo interactive-element">
                         <img src="assets/images/partners/media.jpg" alt="Media Club" class="img-fluid">
                     </div>
                 </div>
                 <div class="col-lg-2 col-md-3 col-sm-4 col-6">
-                    <div class="partner-logo">
+                    <div class="partner-logo interactive-element">
                         <img src="assets/images/partners/cultural.jpg" alt="Cultural Club" class="img-fluid">
                     </div>
                 </div>
                 <div class="col-lg-2 col-md-3 col-sm-4 col-6">
-                    <div class="partner-logo">
+                    <div class="partner-logo interactive-element">
                         <img src="assets/images/partners/sports.jpg" alt="Sports Club" class="img-fluid">
                     </div>
                 </div>
                 <div class="col-lg-2 col-md-3 col-sm-4 col-6">
-                    <div class="partner-logo">
+                    <div class="partner-logo interactive-element">
                         <img src="assets/images/partners/innovara.png" alt="Innovara" class="img-fluid">
                     </div>
                 </div>
             </div>
 
-            <div class="text-center mt-5" data-aos="fade-up" data-aos-delay="300">
-                <a href="pages/partners.html" class="btn btn-primary btn-lg">
+            <div class="text-center mt-5 animate-on-scroll" data-aos="fade-up" data-aos-delay="300">
+                <a href="pages/partners.html" class="btn btn-primary btn-lg interactive-element">
                     <i class="bi bi-handshake me-2"></i>
                     View All Partners
                 </a>
@@ -380,15 +396,15 @@
     <section class="py-5 bg-gradient">
         <div class="container">
             <div class="row justify-content-center text-center">
-                <div class="col-lg-8" data-aos="fade-up" data-aos-duration="800">
+                <div class="col-lg-8 animate-on-scroll" data-aos="fade-up" data-aos-duration="800">
                     <h2 class="mb-4">Ready to Join Our Community?</h2>
                     <p class="lead mb-4">Be part of CESA and unlock opportunities for growth, learning, and innovation in the field of computer engineering.</p>
                     <div class="d-flex flex-wrap justify-content-center gap-3">
-                        <a href="pages/contact.html" class="btn btn-primary btn-lg">
+                        <a href="pages/contact.html" class="btn btn-primary btn-lg interactive-element">
                             <i class="bi bi-person-plus me-2"></i>
                             Join CESA
                         </a>
-                        <a href="pages/events.html" class="btn btn-outline-primary btn-lg">
+                        <a href="pages/events.html" class="btn btn-outline-primary btn-lg interactive-element">
                             <i class="bi bi-calendar-event me-2"></i>
                             Upcoming Events
                         </a>
@@ -409,11 +425,11 @@
                         <h5 class="mb-3">CESA - ISBM College of Engineering</h5>
                         <p class="text-muted mb-4">Empowering future tech leaders through innovation, collaboration, and excellence in computer engineering education.</p>
                         <div class="social-links">
-                            <a href="#" aria-label="Facebook"><i class="bi bi-facebook"></i></a>
-                            <a href="#" aria-label="Instagram"><i class="bi bi-instagram"></i></a>
-                            <a href="#" aria-label="LinkedIn"><i class="bi bi-linkedin"></i></a>
-                            <a href="#" aria-label="GitHub"><i class="bi bi-github"></i></a>
-                            <a href="#" aria-label="YouTube"><i class="bi bi-youtube"></i></a>
+                            <a href="#" aria-label="Facebook" class="interactive-element"><i class="bi bi-facebook"></i></a>
+                            <a href="#" aria-label="Instagram" class="interactive-element"><i class="bi bi-instagram"></i></a>
+                            <a href="#" aria-label="LinkedIn" class="interactive-element"><i class="bi bi-linkedin"></i></a>
+                            <a href="#" aria-label="GitHub" class="interactive-element"><i class="bi bi-github"></i></a>
+                            <a href="#" aria-label="YouTube" class="interactive-element"><i class="bi bi-youtube"></i></a>
                         </div>
                     </div>
                 </div>
@@ -485,6 +501,7 @@
     <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
     <script src="assets/js/pop-up.js"></script>
     <script src="assets/js/script.js"></script>
+    <script src="assets/js/modern-interactions.js"></script>
     
     <script>
         // Initialize AOS with custom settings
@@ -555,6 +572,19 @@
                     }, 1000);
                 }
             });
+        });
+
+        // Remove loading overlay after page loads
+        window.addEventListener('load', function() {
+            const loadingOverlay = document.getElementById('loadingOverlay');
+            if (loadingOverlay) {
+                loadingOverlay.classList.add('fade-out');
+                setTimeout(() => {
+                    loadingOverlay.style.display = 'none';
+                    document.body.classList.remove('loading');
+                    document.body.classList.add('loaded');
+                }, 500);
+            }
         });
     </script>
 </body>
