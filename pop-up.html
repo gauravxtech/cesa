@@ -1,0 +1,607 @@
+<!-- Event Popup Overlay -->
+<div id="popupOverlay" class="popup-overlay">
+    <!-- Event Popup Container -->
+    <div id="eventPopup" class="event-popup">
+        <!-- Close Button -->
+        <button class="close-btn" onclick="closeEventPopup()">
+            <i class="bi bi-x-lg"></i>
+        </button>
+
+        <!-- Event Content -->
+        <div class="event-content">
+            <!-- Event Image -->
+            <div class="event-image" onclick="redirectToRegistration()" style="cursor: pointer;">
+                <img src="assets/images/events/posters/CodeStrom.jpg" alt="CodeStrom Event" onclick="redirectToRegistration()">
+                <div class="image-overlay">
+                    <div class="overlay-content">
+                        <i class="bi bi-arrow-right-circle"></i>
+                        <span>Click to Register</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<style>
+/* Reset any conflicting styles */
+* {
+    box-sizing: border-box;
+}
+
+/* Popup Overlay */
+.popup-overlay {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.85);
+    backdrop-filter: blur(8px);
+    z-index: 9999;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.popup-overlay.show {
+    opacity: 1;
+}
+
+/* Event Popup */
+.event-popup {
+    display: none;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(0.9);
+    background: linear-gradient(135deg, rgba(10, 10, 10, 0.98), rgba(20, 20, 20, 0.98));
+    border: 2px solid #00ff9d;
+    border-radius: 20px;
+    padding: 0;
+    max-width: 450px;
+    width: 75%;
+    max-height: 85vh;
+    overflow: hidden;
+    z-index: 10000;
+    opacity: 0;
+    transition: all 0.3s ease;
+    box-shadow: 0 0 40px rgba(0, 255, 157, 0.4);
+}
+
+.event-popup.show {
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(1);
+}
+
+/* Close Button */
+.close-btn {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    width: 40px;
+    height: 40px;
+    background: #00ff9d;
+    border: none;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    color: #000;
+    font-size: 1.2rem;
+    font-weight: bold;
+    transition: all 0.3s ease;
+    z-index: 10001;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+}
+
+.close-btn:hover {
+    transform: scale(1.1);
+    background: #fff;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.4);
+}
+
+/* Event Content */
+.event-content {
+    display: block;
+    height: 100%;
+    width: 100%;
+}
+
+.event-image {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    overflow: hidden;
+    border-radius: 18px;
+    margin: 0;
+    padding: 0;
+    cursor: pointer;
+    z-index: 1;
+}
+
+.event-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    transition: transform 0.3s ease;
+    border-radius: 18px;
+    margin: 0;
+    padding: 0;
+}
+
+.event-image:hover img {
+    transform: scale(1.02);
+}
+
+.image-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.7);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    transition: all 0.3s ease;
+    border-radius: 18px;
+    margin: 0;
+    padding: 0;
+    pointer-events: none;
+}
+
+.event-image:hover .image-overlay {
+    opacity: 1;
+}
+
+.overlay-content {
+    text-align: center;
+    color: #fff;
+}
+
+.overlay-content i {
+    font-size: 3rem;
+    color: #00ff9d;
+    margin-bottom: 0.5rem;
+    display: block;
+}
+
+.overlay-content span {
+    font-size: 1.2rem;
+    font-weight: 600;
+    display: block;
+}
+
+.event-details {
+    flex: 1;
+    color: #fff;
+    padding: 2rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.event-tag {
+    display: inline-block;
+    background: linear-gradient(135deg, #00ff9d, #00d4ff);
+    color: #000;
+    padding: 0.5rem 1rem;
+    border-radius: 25px;
+    font-size: 0.8rem;
+    font-weight: 600;
+    margin-bottom: 1rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.event-details h2 {
+    font-size: 2.2rem;
+    font-weight: 800;
+    margin-bottom: 1rem;
+    color: #fff;
+    text-shadow: 0 0 20px rgba(0, 255, 157, 0.3);
+    background: linear-gradient(45deg, #00ff9d, #00d4ff);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.event-datetime {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin: 1rem 0;
+    flex-wrap: wrap;
+}
+
+.date-box {
+    background: rgba(0, 255, 157, 0.1);
+    border: 2px solid #00ff9d;
+    border-radius: 12px;
+    padding: 1rem 1.2rem;
+    text-align: center;
+    min-width: 90px;
+    backdrop-filter: blur(10px);
+}
+
+.date-day {
+    display: block;
+    font-size: 2rem;
+    font-weight: 900;
+    color: #00ff9d;
+    line-height: 1;
+}
+
+.date-month {
+    display: block;
+    font-size: 0.9rem;
+    color: #fff;
+    font-weight: 500;
+    margin-top: 0.2rem;
+}
+
+.date-year {
+    display: block;
+    font-size: 0.8rem;
+    color: #b4b4b4;
+    margin-top: 0.1rem;
+}
+
+.time-box {
+    padding: 0.8rem 1.2rem;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    color: #fff;
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.time-box i {
+    color: #00ff9d;
+    font-size: 1.1rem;
+}
+
+.event-location {
+    background: rgba(255, 255, 255, 0.1);
+    padding: 0.8rem 1.2rem;
+    border-radius: 12px;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin: 1rem 0;
+    color: #fff;
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.event-location i {
+    color: #00ff9d;
+}
+
+.event-description {
+    font-size: 1rem;
+    line-height: 1.6;
+    color: #b4b4b4;
+    margin: 1rem 0;
+    background: rgba(0, 0, 0, 0.3);
+    padding: 1rem;
+    border-radius: 12px;
+    border: 1px solid rgba(0, 255, 157, 0.2);
+}
+
+.event-highlights {
+    margin: 1rem 0;
+}
+
+.event-highlights ul {
+    list-style: none;
+    padding: 1.2rem 1.5rem;
+    background: rgba(0, 0, 0, 0.4);
+    border-radius: 12px;
+    border: 1px solid rgba(0, 255, 157, 0.2);
+    backdrop-filter: blur(10px);
+}
+
+.event-highlights li {
+    margin-bottom: 0.8rem;
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+    color: #fff;
+    font-size: 0.95rem;
+}
+
+.event-highlights li:last-child {
+    margin-bottom: 0;
+}
+
+.event-highlights i {
+    color: #00ff9d;
+    font-size: 1.2rem;
+    min-width: 20px;
+}
+
+.event-actions {
+    display: flex;
+    gap: 1rem;
+    margin-top: 1.5rem;
+    flex-wrap: wrap;
+}
+
+.event-actions .btn {
+    padding: 1rem 1.5rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    transition: all 0.3s ease;
+    border-radius: 12px;
+    text-decoration: none;
+    display: inline-block;
+    text-align: center;
+    min-width: 140px;
+    font-size: 0.9rem;
+    border: 2px solid transparent;
+}
+
+.btn-primary {
+    background: linear-gradient(45deg, #00ff9d, #00d4ff);
+    border-color: #00ff9d;
+    color: #000;
+}
+
+.btn-outline-primary {
+    border-color: #00ff9d;
+    color: #00ff9d;
+    background: transparent;
+}
+
+.btn-primary:hover {
+    background: #fff;
+    transform: translateY(-3px);
+    box-shadow: 0 8px 25px rgba(0, 255, 157, 0.4);
+    color: #000;
+}
+
+.btn-outline-primary:hover {
+    background: #00ff9d;
+    color: #000;
+    transform: translateY(-3px);
+    box-shadow: 0 8px 25px rgba(0, 255, 157, 0.4);
+}
+
+/* Desktop Responsive Design */
+@media (min-width: 1200px) {
+    .event-popup {
+        max-width: 500px;
+        width: 70%;
+        max-height: 85vh;
+        overflow: hidden;
+    }
+    
+    .event-image img {
+        object-fit: contain;
+        max-height: 80vh;
+        border-radius: 18px;
+        margin: 0;
+        padding: 0;
+    }
+}
+
+@media (min-width: 992px) and (max-width: 1199px) {
+    .event-popup {
+        max-width: 450px;
+        width: 75%;
+        max-height: 88vh;
+        overflow: hidden;
+    }
+}
+
+@media (min-width: 768px) and (max-width: 991px) {
+    .event-popup {
+        max-width: 400px;
+        width: 80%;
+        max-height: 90vh;
+        overflow: hidden;
+    }
+}
+
+/* Mobile Responsive Design */
+@media (max-width: 768px) {
+    .event-popup {
+        width: 280px;
+        max-width: 280px;
+        padding: 0;
+        max-height: 90vh;
+        margin: 1rem auto;
+        overflow: hidden;
+    }
+
+    .event-content {
+        height: 100%;
+        width: 100%;
+        margin: 0;
+        padding: 0;
+    }
+
+    .event-image {
+        width: 100%;
+        height: 100%;
+        border-radius: 18px;
+        margin: 0;
+        padding: 0;
+    }
+
+    .event-image img {
+        width: 100%;
+        height: 100%;
+        object-fit: contain;
+        border-radius: 18px;
+        margin: 0;
+        padding: 0;
+    }
+
+    .close-btn {
+        top: 10px;
+        right: 10px;
+        width: 30px;
+        height: 30px;
+        font-size: 0.9rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .event-popup {
+        width: 260px;
+        max-width: 260px;
+        padding: 0;
+        max-height: 95vh;
+        margin: 0.5rem auto;
+        overflow: hidden;
+    }
+
+    .event-content {
+        height: 100%;
+        width: 100%;
+        margin: 0;
+        padding: 0;
+    }
+
+    .event-image {
+        width: 100%;
+        height: 100%;
+        margin: 0;
+        padding: 0;
+    }
+
+    .event-image img {
+        width: 100%;
+        height: 100%;
+        object-fit: contain;
+        border-radius: 18px;
+        margin: 0;
+        padding: 0;
+    }
+
+    .close-btn {
+        top: 8px;
+        right: 8px;
+        width: 28px;
+        height: 28px;
+        font-size: 0.8rem;
+    }
+}
+
+@media (max-width: 360px) {
+    .event-popup {
+        width: 240px;
+        max-width: 240px;
+        padding: 0;
+        overflow: hidden;
+    }
+
+    .event-content {
+        height: 100%;
+        width: 100%;
+        margin: 0;
+        padding: 0;
+    }
+
+    .event-image {
+        width: 100%;
+        height: 100%;
+        margin: 0;
+        padding: 0;
+    }
+
+    .event-image img {
+        width: 100%;
+        height: 100%;
+        object-fit: contain;
+        border-radius: 18px;
+        margin: 0;
+        padding: 0;
+    }
+}
+
+/* Landscape Mobile */
+@media (max-width: 768px) and (orientation: landscape) {
+    .event-popup {
+        width: 280px;
+        max-width: 280px;
+        max-height: 95vh;
+        padding: 0;
+        overflow: hidden;
+    }
+
+    .event-content {
+        height: 100%;
+        width: 100%;
+        margin: 0;
+        padding: 0;
+    }
+
+    .event-image {
+        width: 100%;
+        height: 100%;
+        border-radius: 18px;
+        margin: 0;
+        padding: 0;
+    }
+
+    .event-image img {
+        width: 100%;
+        height: 100%;
+        object-fit: contain;
+        border-radius: 18px;
+        margin: 0;
+        padding: 0;
+    }
+}
+
+/* Ensure no prize banner appears */
+.event-popup * {
+    box-sizing: border-box;
+}
+
+/* Hide any potential prize banners */
+.event-popup .prize-banner,
+.event-popup .competition-banner,
+.event-popup .subscription-banner {
+    display: none !important;
+}
+</style>
+
+<script src="assets/js/pop-up.js"></script>
+<script>
+// Add click event listener as backup
+document.addEventListener('DOMContentLoaded', function() {
+    const eventImage = document.querySelector('.event-image');
+    if (eventImage) {
+        eventImage.addEventListener('click', function(e) {
+            e.preventDefault();
+            e.stopPropagation();
+            if (typeof redirectToRegistration === 'function') {
+                redirectToRegistration();
+            }
+        });
+    }
+    
+    // Also add click to the image itself
+    const eventImg = document.querySelector('.event-image img');
+    if (eventImg) {
+        eventImg.addEventListener('click', function(e) {
+            e.preventDefault();
+            e.stopPropagation();
+            if (typeof redirectToRegistration === 'function') {
+                redirectToRegistration();
+            }
+        });
+    }
+});
+</script> 

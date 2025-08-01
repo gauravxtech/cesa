@@ -1,0 +1,28 @@
+User-agent: *
+Allow: /
+
+# Allow all search engines to crawl the site
+User-agent: Googlebot
+Allow: /
+
+User-agent: Bingbot
+Allow: /
+
+User-agent: Slurp
+Allow: /
+
+# Disallow admin or private areas (if any)
+Disallow: /admin/
+Disallow: /private/
+Disallow: /temp/
+
+# Allow important files
+Allow: /sitemap.xml
+Allow: /assets/
+Allow: /pages/
+
+# Sitemap location
+Sitemap: https://cesa-isbmcoe.netlify.app/sitemap.xml
+
+# Crawl delay (optional - be respectful to servers)
+Crawl-delay: 1 

@@ -1,0 +1,52 @@
+/* Custom Cursor Effects */
+.custom-cursor {
+    position: fixed;
+    width: 8px;
+    height: 8px;
+    background: var(--primary-color);
+    border-radius: 50%;
+    pointer-events: none;
+    z-index: 10000;
+    mix-blend-mode: difference;
+    transition: transform 0.2s ease;
+}
+
+.cursor-follower {
+    position: fixed;
+    width: 30px;
+    height: 30px;
+    border: 2px solid var(--primary-color);
+    border-radius: 50%;
+    pointer-events: none;
+    z-index: 9999;
+    opacity: 0.5;
+    transition: transform 0.3s ease;
+}
+
+.custom-cursor.cursor-hover {
+    transform: scale(2);
+    background: var(--secondary-color);
+}
+
+.cursor-follower.cursor-hover {
+    transform: scale(1.5);
+    border-color: var(--secondary-color);
+    opacity: 0.8;
+}
+
+/* Hide default cursor on interactive elements */
+a, button, .btn, .interactive-element {
+    cursor: none;
+}
+
+/* Mobile - hide custom cursor */
+@media (max-width: 768px) {
+    .custom-cursor,
+    .cursor-follower {
+        display: none;
+    }
+    
+    a, button, .btn, .interactive-element {
+        cursor: pointer;
+    }
+}

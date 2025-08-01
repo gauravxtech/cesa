@@ -1,0 +1,568 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>CodeStrom Registration - CESA ISBM COE</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet"/>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.2/font/bootstrap-icons.css" rel="stylesheet"/>
+  <link href="../assets/css/style.css" rel="stylesheet"/>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css">
+  <style>
+    body {
+      background: linear-gradient(135deg, #0a0a0a 0%, #1a1a2e 50%, #16213e 100%);
+      color: #fff;
+      font-family: 'Segoe UI', sans-serif;
+      overflow-x: hidden;
+    }
+
+    /* Animated Background */
+    .animated-bg {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: -1;
+      background: 
+        radial-gradient(circle at 20% 80%, rgba(0, 255, 157, 0.1) 0%, transparent 50%),
+        radial-gradient(circle at 80% 20%, rgba(0, 255, 157, 0.1) 0%, transparent 50%),
+        radial-gradient(circle at 40% 40%, rgba(0, 255, 157, 0.05) 0%, transparent 50%);
+    }
+
+    .floating-particles {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+    }
+
+    .particle {
+      position: absolute;
+      width: 2px;
+      height: 2px;
+      background: #00ff9d;
+      border-radius: 50%;
+      animation: float 6s ease-in-out infinite;
+    }
+
+    @keyframes float {
+      0%, 100% { transform: translateY(0px) rotate(0deg); opacity: 0; }
+      50% { transform: translateY(-20px) rotate(180deg); opacity: 1; }
+    }
+
+    .registration-section {
+      padding: 120px 0 60px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .registration-header {
+      text-align: center;
+      margin-bottom: 4rem;
+    }
+
+    .registration-header h1 {
+      background: linear-gradient(45deg, #00ff9d, #00d4ff, #00ff9d);
+      background-size: 200% 200%;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      font-size: 3.5rem;
+      font-weight: 800;
+      margin-bottom: 1rem;
+      animation: gradientShift 3s ease-in-out infinite;
+    }
+
+    @keyframes gradientShift {
+      0%, 100% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+    }
+
+    .registration-header p {
+      color: #b4b4b4;
+      font-size: 1.2rem;
+      margin-bottom: 2rem;
+      max-width: 600px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .event-card {
+      background: rgba(255, 255, 255, 0.05);
+      backdrop-filter: blur(20px);
+      border: 1px solid rgba(0, 255, 157, 0.2);
+      border-radius: 20px;
+      padding: 2rem;
+      box-shadow: 0 8px 32px rgba(0, 255, 157, 0.1);
+      transition: all 0.3s ease;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .event-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(0, 255, 157, 0.1), transparent);
+      transition: left 0.5s ease;
+    }
+
+    .event-card:hover::before {
+      left: 100%;
+    }
+
+    .event-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 15px 40px rgba(0, 255, 157, 0.2);
+      border-color: rgba(0, 255, 157, 0.4);
+    }
+
+    .event-details h3 {
+      color: #00ff9d;
+      font-size: 1.8rem;
+      margin-bottom: 1.5rem;
+      font-weight: 700;
+    }
+
+    .event-info {
+      list-style: none;
+      padding: 0;
+    }
+
+    .event-info li {
+      display: flex;
+      align-items: center;
+      margin-bottom: 1rem;
+      color: #e0e0e0;
+      font-size: 1.1rem;
+      padding: 0.5rem 0;
+      border-bottom: 1px solid rgba(0, 255, 157, 0.1);
+    }
+
+    .event-info li:last-child {
+      border-bottom: none;
+    }
+
+    .event-info i {
+      color: #00ff9d;
+      margin-right: 15px;
+      font-size: 1.2rem;
+      width: 20px;
+      text-align: center;
+    }
+
+    .btn-modern {
+      background: linear-gradient(45deg, #00ff9d, #00d4ff);
+      border: none;
+      color: #000;
+      font-weight: 600;
+      padding: 12px 30px;
+      border-radius: 50px;
+      font-size: 1.1rem;
+      transition: all 0.3s ease;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .btn-modern::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+      transition: left 0.5s ease;
+    }
+
+    .btn-modern:hover::before {
+      left: 100%;
+    }
+
+    .btn-modern:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 10px 25px rgba(0, 255, 157, 0.3);
+    }
+
+    .event-image-container {
+      position: relative;
+      border-radius: 20px;
+      overflow: hidden;
+      box-shadow: 0 15px 40px rgba(0, 0, 0, 0.3);
+    }
+
+    .event-image-container img {
+      width: 100%;
+      height: auto;
+      transition: transform 0.3s ease;
+    }
+
+    .event-image-container:hover img {
+      transform: scale(1.05);
+    }
+
+    .event-image-container::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: linear-gradient(45deg, rgba(0, 255, 157, 0.1), rgba(0, 212, 255, 0.1));
+      pointer-events: none;
+    }
+
+    .modal-content {
+      background: rgba(10, 10, 10, 0.95);
+      backdrop-filter: blur(20px);
+      border: 1px solid rgba(0, 255, 157, 0.2);
+      border-radius: 20px;
+    }
+
+    .google-form {
+      width: 100%;
+      height: 80vh;
+      border: none;
+      border-radius: 15px;
+    }
+
+    .loading-overlay {
+      position: absolute;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      background: rgba(0, 0, 0, 0.8);
+      z-index: 10;
+      border-radius: 15px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .stats-section {
+      background: rgba(0, 255, 157, 0.05);
+      border-radius: 20px;
+      padding: 2rem;
+      margin: 2rem 0;
+      border: 1px solid rgba(0, 255, 157, 0.1);
+    }
+
+    .stat-item {
+      text-align: center;
+      padding: 1rem;
+    }
+
+    .stat-number {
+      font-size: 2.5rem;
+      font-weight: 800;
+      color: #00ff9d;
+      margin-bottom: 0.5rem;
+    }
+
+    .stat-label {
+      color: #b4b4b4;
+      font-size: 1rem;
+    }
+
+    @media (max-width: 768px) {
+      .registration-header h1 {
+        font-size: 2.5rem;
+      }
+      
+      .event-card {
+        margin-bottom: 2rem;
+      }
+    }
+
+    /* Custom scrollbar */
+    ::-webkit-scrollbar {
+      width: 8px;
+    }
+
+    ::-webkit-scrollbar-track {
+      background: #1a1a2e;
+    }
+
+    ::-webkit-scrollbar-thumb {
+      background: #00ff9d;
+      border-radius: 4px;
+    }
+
+    ::-webkit-scrollbar-thumb:hover {
+      background: #00d4ff;
+    }
+  </style>
+</head>
+<body>
+
+<!-- Animated Background -->
+<div class="animated-bg">
+  <div class="floating-particles">
+    <div class="particle" style="left: 10%; animation-delay: 0s;"></div>
+    <div class="particle" style="left: 20%; animation-delay: 1s;"></div>
+    <div class="particle" style="left: 30%; animation-delay: 2s;"></div>
+    <div class="particle" style="left: 40%; animation-delay: 3s;"></div>
+    <div class="particle" style="left: 50%; animation-delay: 4s;"></div>
+    <div class="particle" style="left: 60%; animation-delay: 5s;"></div>
+    <div class="particle" style="left: 70%; animation-delay: 0.5s;"></div>
+    <div class="particle" style="left: 80%; animation-delay: 1.5s;"></div>
+    <div class="particle" style="left: 90%; animation-delay: 2.5s;"></div>
+  </div>
+</div>
+
+<!-- Navigation -->
+<nav class="navbar navbar-expand-lg navbar-dark fixed-top">
+    <div class="container">
+        <a class="navbar-brand d-flex align-items-center" href="../index.html">
+            <div class="brand-container">
+                <img src="../assets/images/cesa-logo.png" alt="CESA Logo" class="brand-logo">
+                <div class="brand-text">
+                    <span class="brand-title">CESA</span>
+                    <span class="brand-subtitle">ISBM College of Engineering</span>
+                </div>
+            </div>
+        </a>
+        <button class="navbar-toggler custom-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+            <div class="toggler-icon">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ms-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="../index.html">
+                        <i class="bi bi-house-door"></i>
+                        <span>Home</span>
+                    </a>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="aboutDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        <i class="bi bi-info-circle"></i>
+                        <span>About Us</span>
+                    </a>
+                    <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="aboutDropdown">
+                        <li><a class="dropdown-item" href="about.html">About CESA</a></li>
+                        <li><a class="dropdown-item" href="partners.html">Our Partners</a></li>
+                        <li><a class="dropdown-item" href="charter.html">CESA Charter</a></li>
+                    </ul>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="events.html">
+                        <i class="bi bi-calendar-event"></i>
+                        <span>Events</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="team.html">
+                        <i class="bi bi-people"></i>
+                        <span>Team</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="gallery.html">
+                        <i class="bi bi-images"></i>
+                        <span>Gallery</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="verify.html">
+                        <i class="bi bi-award"></i>
+                        <span>Certificates</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="contact.html">
+                        <i class="bi bi-envelope"></i>
+                        <span>Contact Us</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link login-link" href="login.html">
+                        <i class="bi bi-box-arrow-in-right"></i>
+                        <span>Login</span>
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<!-- Registration Section -->
+<section class="registration-section">
+  <div class="container">
+    <div class="registration-header" data-aos="fade-up">
+      <h1>CodeStrom 2025</h1>
+      <p>Join the most competitive coding event on HackerRank platform. Test your programming skills, solve challenging problems, and win exciting prizes in this epic coding battle!</p>
+    </div>
+
+    <div class="row align-items-center">
+      <div class="col-lg-5 mb-4" data-aos="fade-right">
+        <div class="event-card">
+          <h3><i class="bi bi-code-slash me-2"></i>Event Details</h3>
+          <ul class="event-info">
+            <li><i class="bi bi-calendar-event"></i> August 4, 2025</li>
+            <li><i class="bi bi-clock"></i> 10:00 AM – 4:00 PM</li>
+            <li><i class="bi bi-geo-alt"></i> Seminar Hall, ISBM COE</li>
+            <li><i class="bi bi-trophy"></i> Exciting Prizes</li>
+            <li><i class="bi bi-code-slash"></i> HackerRank Platform</li>
+            <li><i class="bi bi-award"></i> Certificates to All</li>
+            <li><i class="bi bi-people"></i> Max 150 Participants</li>
+            <li><i class="bi bi-lightning"></i> Real-time Leaderboard</li>
+          </ul>
+          <a href="https://docs.google.com/forms/d/e/1FAIpQLSf_tOrZzvaBxn4x8HFQGxWJdfZ-1PzzGXanjab4pnRnQ9R_Xw/viewform?usp=header" target="_blank" class="btn btn-modern w-100 mt-4">
+            <i class="bi bi-pencil-square me-2"></i>Register Now
+          </a>
+        </div>
+      </div>
+
+      <div class="col-lg-7" data-aos="fade-left">
+        <div class="event-image-container">
+                          <img src="../assets/images/events/posters/CodeStrom.jpg" alt="CodeStrom Event Banner"/>
+        </div>
+      </div>
+    </div>
+
+    <!-- Stats Section -->
+    <div class="stats-section" data-aos="fade-up" data-aos-delay="200">
+      <div class="row text-center">
+                 <div class="col-md-3 col-6">
+           <div class="stat-item">
+             <div class="stat-number">150</div>
+             <div class="stat-label">Max Participants</div>
+           </div>
+         </div>
+                 <div class="col-md-3 col-6">
+           <div class="stat-item">
+             <div class="stat-number">Exciting</div>
+             <div class="stat-label">Prizes</div>
+           </div>
+         </div>
+        <div class="col-md-3 col-6">
+          <div class="stat-item">
+            <div class="stat-number">6</div>
+            <div class="stat-label">Hours Duration</div>
+          </div>
+        </div>
+        <div class="col-md-3 col-6">
+          <div class="stat-item">
+            <div class="stat-number">100%</div>
+            <div class="stat-label">Online Event</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+
+<!-- Footer -->
+<footer class="footer py-5">
+    <div class="container">
+        <div class="row g-4">
+            <!-- Brand Column -->
+            <div class="col-lg-4 col-md-6">
+                <div class="footer-brand">
+                    <img src="../assets/images/cesa-logo.png" alt="CESA Logo" class="footer-logo mb-3">
+                    <h5 class="text-white mb-3">CESA - ISBM College of Engineering</h5>
+                    <p class="text-muted mb-0">Computer Engineering Students Association</p>
+                </div>
+            </div>
+
+            <!-- Quick Links Column -->
+            <div class="col-lg-2 col-md-6">
+                <h5 class="text-white mb-4">Quick Links</h5>
+                <ul class="list-unstyled footer-links">
+                    <li><a href="../index.html">Home</a></li>
+                    <li><a href="about.html">About Us</a></li>
+                    <li><a href="events.html">Events</a></li>
+                    <li><a href="team.html">Team</a></li>
+                    <li><a href="gallery.html">Gallery</a></li>
+                    <li><a href="verify.html">Certificates</a></li>
+                </ul>
+            </div>
+
+            <!-- Resources Column -->
+            <div class="col-lg-2 col-md-6">
+                <h5 class="text-white mb-4">Resources</h5>
+                <ul class="list-unstyled footer-links">
+                    <li><a href="partners.html">Our Partners</a></li>
+                    <li><a href="charter.html">CESA Charter</a></li>
+                    <li><a href="#">Student Portal</a></li>
+                    <li><a href="#">Downloads</a></li>
+                    <li><a href="#">FAQs</a></li>
+                </ul>
+            </div>
+
+            <!-- Contact Info Column -->
+            <div class="col-lg-4 col-md-6">
+                <h5 class="text-white mb-4">Contact Us</h5>
+                <div class="contact-info">
+                    <p class="text-white mb-3">
+                        <i class="bi bi-geo-alt me-2"></i>
+                        ISBM College of Engineering, Nande, Pune, Maharashtra 412115
+                    </p>
+                    <p class="text-white mb-3">
+                        <i class="bi bi-envelope me-2"></i>
+                        cesa@isbmcoe.org
+                    </p>
+                    <p class="text-white mb-4">
+                        <i class="bi bi-phone me-2"></i>
+                        +91 1234567890
+                    </p>
+                    <div class="social-links">
+                        <a href="#" class="me-3"><i class="bi bi-facebook"></i></a>
+                        <a href="#" class="me-3"><i class="bi bi-instagram"></i></a>
+                        <a href="#" class="me-3"><i class="bi bi-linkedin"></i></a>
+                        <a href="#" class="me-3"><i class="bi bi-github"></i></a>
+                        <a href="#"><i class="bi bi-youtube"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Footer Bottom -->
+        <hr class="mt-4 mb-3 border-secondary">
+        <div class="row align-items-center">
+            <div class="col-md-6 text-center text-md-start">
+                                    <p class="text-white mb-md-0">&copy; 2025 CESA. All rights reserved.</p>
+            </div>
+            <div class="col-md-6 text-center text-md-end">
+                                    <p class="text-white mb-0">Developed by <span class="text-primary">Innovara Dynamics</span> Managed by <span class="text-primary">CESA</span></p>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+<script>
+  // Initialize AOS
+  AOS.init({
+    duration: 1000,
+    once: true,
+    offset: 100
+  });
+
+  // Add floating particles dynamically
+  function createParticles() {
+    const particlesContainer = document.querySelector('.floating-particles');
+    for (let i = 0; i < 20; i++) {
+      const particle = document.createElement('div');
+      particle.className = 'particle';
+      particle.style.left = Math.random() * 100 + '%';
+      particle.style.animationDelay = Math.random() * 6 + 's';
+      particlesContainer.appendChild(particle);
+    }
+  }
+
+  // Initialize particles on page load
+  document.addEventListener('DOMContentLoaded', createParticles);
+</script>
+</body>
+</html> 

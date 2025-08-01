@@ -1,0 +1,487 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Verify Certificate - CESA ISBM COE</title>
+    <link rel="icon" type="image/png" href="../assets/images/cesa-logo.png">
+    <!-- Preload critical resources -->
+    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" as="style">
+    <link rel="preload" href="../assets/css/style.css" as="style">
+    <link rel="preload" href="../assets/images/cesa-logo.png" as="image">
+    
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    
+    <!-- CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.2/font/bootstrap-icons.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css">
+    
+    <!-- Main Styles -->
+    <link href="../assets/css/style.css" rel="stylesheet">
+    <!-- Modern Enhancements -->
+    <link href="../assets/css/modern-enhancements.css" rel="stylesheet">
+    <link href="../assets/css/cursor-effects.css" rel="stylesheet">
+    <link href="../assets/css/loading-animations.css" rel="stylesheet">
+    <link href="../assets/css/responsive-enhancements.css" rel="stylesheet">
+    
+    <!-- Meta tags for SEO -->
+    <meta name="description" content="Computer Engineering Students Association at ISBM College of Engineering - Empowering future tech leaders through innovation and collaboration.">
+    <meta name="keywords" content="CESA, Computer Engineering, ISBM, Students Association, Technology, Innovation">
+    <meta name="author" content="CESA Tech Team">
+    
+    <!-- Open Graph tags -->
+    <meta property="og:title" content="CESA - Computer Engineering Students Association">
+    <meta property="og:description" content="Empowering future tech leaders through innovation and collaboration">
+    <meta property="og:image" content="../assets/images/cesa-logo.png">
+    <meta property="og:type" content="website">
+    <style>
+        .verify-section {
+            padding: 120px 0 60px;
+            min-height: 100vh;
+            background: linear-gradient(135deg, rgba(0,0,0,0.95), rgba(0,0,0,0.85));
+        }
+
+        .verify-container {
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 2rem;
+            background: rgba(255, 255, 255, 0.02);
+            border-radius: 15px;
+            border: 1px solid rgba(0, 255, 157, 0.1);
+            box-shadow: 0 0 30px rgba(0, 0, 0, 0.3);
+        }
+
+        .verify-header {
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+
+        .verify-header h1 {
+            color: #00ff9d;
+            font-size: 2rem;
+            margin-bottom: 1rem;
+        }
+
+        .verify-header p {
+            color: #b4b4b4;
+            font-size: 1rem;
+        }
+
+        .verify-form {
+            margin-bottom: 2rem;
+        }
+
+        .verify-form .form-control {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(0, 255, 157, 0.2);
+            color: #fff;
+            padding: 0.8rem;
+        }
+
+        .verify-form .form-control:focus {
+            background: rgba(255, 255, 255, 0.08);
+            border-color: #00ff9d;
+            box-shadow: 0 0 0 0.2rem rgba(0, 255, 157, 0.25);
+        }
+
+        .verify-form .btn {
+            padding: 0.8rem 2rem;
+            font-weight: 500;
+        }
+
+        .error-message {
+            display: none;
+            background: rgba(255, 59, 48, 0.1);
+            border: 1px solid rgba(255, 59, 48, 0.2);
+            color: #ff3b30;
+            padding: 1rem;
+            border-radius: 8px;
+            margin-top: 1rem;
+            text-align: center;
+        }
+
+        .loading-spinner {
+            display: none;
+            text-align: center;
+            margin-top: 1rem;
+        }
+
+        .loading-spinner .spinner-border {
+            color: #00ff9d;
+        }
+    </style>
+</head>
+<body class="loading">
+    <!-- Loading Overlay -->
+    <div class="loading-overlay" id="loadingOverlay">
+        <div class="loading-spinner"></div>
+    </div>
+
+    <!-- Custom Cursor -->
+    <div class="custom-cursor"></div>
+    <div class="cursor-follower"></div>
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-dark fixed-top">
+        <div class="container" style="position: relative;">
+            <a class="navbar-brand d-flex align-items-center" href="../index.html">
+                <div class="brand-container">
+                    <img src="../assets/images/cesa-logo.png" alt="CESA Logo" class="brand-logo">
+                    <div class="brand-text">
+                        <span class="brand-title">CESA</span>
+                        <span class="brand-subtitle">ISBM College of Engineering</span>
+                    </div>
+                </div>
+            </a>
+            <button class="navbar-toggler custom-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <div class="toggler-icon">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link interactive-element" href="../index.html">
+                            <i class="bi bi-house-door"></i>
+                            <span>Home</span>
+                        </a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle interactive-element" href="#" id="aboutDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            <i class="bi bi-info-circle"></i>
+                            <span>About Us</span>
+                        </a>
+                        <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="aboutDropdown">
+                            <li><a class="dropdown-item" href="about.html">About CESA</a></li>
+                            <li><a class="dropdown-item" href="partners.html">Our Partners</a></li>
+                            <li><a class="dropdown-item" href="charter.html">CESA Charter</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link interactive-element" href="events.html">
+                            <i class="bi bi-calendar-event"></i>
+                            <span>Events</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link interactive-element" href="team.html">
+                            <i class="bi bi-people"></i>
+                            <span>Team</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link interactive-element" href="gallery.html">
+                            <i class="bi bi-images"></i>
+                            <span>Gallery</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active interactive-element" href="verify.html" aria-current="page">
+                            <i class="bi bi-award"></i>
+                            <span>Certificates</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link interactive-element" href="contact.html">
+                            <i class="bi bi-envelope"></i>
+                            <span>Contact Us</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link login-link interactive-element" href="login.html">
+                            <i class="bi bi-box-arrow-in-right"></i>
+                            <span>Login</span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Verify Section -->
+    <section class="verify-section">
+        <div class="container">
+            <div class="verify-container">
+                <div class="verify-header">
+                    <h1>Certificate Verification</h1>
+                    <p>Enter your certificate number to verify its authenticity</p>
+                        </div>
+
+                <form class="verify-form" id="verifyForm">
+                            <div class="mb-4">
+                                    <input type="text" class="form-control" id="certificateNumber" 
+                               placeholder="Enter Certificate Number" required>
+                            </div>
+                            <div class="d-grid">
+                        <button type="submit" class="btn btn-success">
+                                    <i class="bi bi-search me-2"></i>Verify Certificate
+                                </button>
+                            </div>
+                        </form>
+
+                <div class="loading-spinner" id="loadingSpinner">
+                    <div class="spinner-border" role="status">
+                        <span class="visually-hidden">Loading...</span>
+                    </div>
+                </div>
+
+                <div class="error-message" id="errorMessage">
+                    <i class="bi bi-exclamation-triangle me-2"></i>
+                    Invalid certificate number. Please check and try again.
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer py-5">
+        <div class="container">
+            <div class="row">
+                <!-- Brand Column -->
+                <div class="col-lg-4 mb-4 mb-lg-0">
+                    <div class="footer-brand">
+                        <img src="../assets/images/cesa-logo.png" alt="CESA Logo" class="footer-logo mb-3">
+                        <h5 class="text-white mb-3">CESA - ISBM College of Engineering</h5>
+                        <p class="text-muted">Computer Engineering Students Association</p>
+                    </div>
+                </div>
+
+                <!-- Quick Links Column -->
+                <div class="col-lg-2 col-md-6">
+                    <h5 class="text-white mb-4">Quick Links</h5>
+                    <ul class="list-unstyled footer-links">
+                        <li><a href="../index.html">Home</a></li>
+                        <li><a href="about.html">About Us</a></li>
+                        <li><a href="events.html">Events</a></li>
+                        <li><a href="team.html">Team</a></li>
+                        <li><a href="gallery.html">Gallery</a></li>
+                        <li><a href="verify.html">Certificates</a></li>
+                    </ul>
+                </div>
+
+                <!-- Resources Column -->
+                <div class="col-lg-2 col-md-6">
+                    <h5 class="text-white mb-4">Resources</h5>
+                    <ul class="list-unstyled footer-links">
+                        <li><a href="partners.html">Our Partners</a></li>
+                        <li><a href="charter.html">CESA Charter</a></li>
+                        <li><a href="#">Student Portal</a></li>
+                        <li><a href="#">Downloads</a></li>
+                        <li><a href="#">FAQs</a></li>
+                    </ul>
+                </div>
+
+                <!-- Contact Info Column -->
+                <div class="col-lg-4 col-md-6">
+                    <h5 class="text-white mb-4">Contact Us</h5>
+                    <ul class="list-unstyled footer-links">
+                        <li class="d-flex mb-3">
+                            <i class="bi bi-geo-alt text-primary me-2"></i>
+                            <span>ISBM College of Engineering, Nande, Pune, Maharashtra 412115</span>
+                        </li>
+                        <li class="d-flex mb-3">
+                            <i class="bi bi-envelope text-primary me-2"></i>
+                            <span>cesa@isbmcoe.org</span>
+                        </li>
+                        <li class="d-flex mb-3">
+                            <i class="bi bi-phone text-primary me-2"></i>
+                            <span>+91 1234567890</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Bottom Footer -->
+            <div class="row mt-4 pt-4 border-top border-secondary">
+                <div class="col-md-6 text-center text-md-start">
+                    <p class="text-white mb-0">&copy; 2025 CESA. All rights reserved.</p>
+                </div>
+                <div class="col-md-6 text-center text-md-end">
+                    <p class="text-white mb-0">Developed by <span class="text-primary">Innovara Dynamics</span> Managed by <span class="text-primary">CESA</span></p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+
+    <script src="../assets/js/script.js"></script>
+    <script src="../assets/js/modern-interactions.js"></script>
+    
+    <script>
+        // Initialize AOS with custom settings
+        AOS.init({
+            duration: 800,
+            once: true,
+            offset: 100,
+            easing: 'ease-out-cubic'
+        });
+
+        // Enhanced navbar scroll effect
+        let lastScrollTop = 0;
+        window.addEventListener('scroll', function() {
+            const navbar = document.querySelector('.navbar');
+            const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+            
+            if (scrollTop > 50) {
+                navbar.classList.add('navbar-scrolled');
+            } else {
+                navbar.classList.remove('navbar-scrolled');
+            }
+            
+            // Hide/show navbar on scroll
+            if (scrollTop > lastScrollTop && scrollTop > 100) {
+                navbar.style.transform = 'translateY(-100%)';
+            } else {
+                navbar.style.transform = 'translateY(0)';
+            }
+            lastScrollTop = scrollTop;
+        });
+
+        // Smooth scroll for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Add loading animation to buttons
+        document.querySelectorAll('.btn').forEach(btn => {
+            btn.addEventListener('click', function(e) {
+                if (!this.classList.contains('loading')) {
+                    this.classList.add('loading');
+                    setTimeout(() => {
+                        this.classList.remove('loading');
+                    }, 1000);
+                }
+            });
+        });
+
+        // Remove loading overlay after page loads
+        window.addEventListener('load', function() {
+            const loadingOverlay = document.getElementById('loadingOverlay');
+            if (loadingOverlay) {
+                loadingOverlay.classList.add('fade-out');
+                setTimeout(() => {
+                    loadingOverlay.style.display = 'none';
+                    document.body.classList.remove('loading');
+                    document.body.classList.add('loaded');
+                }, 500);
+            }
+        });
+
+        // Ensure navbar toggle button is in correct state on page load
+        document.addEventListener('DOMContentLoaded', function() {
+            resetNavbarState();
+        });
+
+        // Additional navbar state management
+        function resetNavbarState() {
+            const navbarToggler = document.querySelector('.navbar-toggler');
+            const navbarCollapse = document.querySelector('.navbar-collapse');
+            
+            if (navbarToggler && navbarCollapse) {
+                // Force collapsed state
+                navbarCollapse.classList.add('collapse');
+                navbarToggler.classList.add('collapsed');
+                navbarToggler.setAttribute('aria-expanded', 'false');
+                
+                // Remove any conflicting classes
+                navbarCollapse.classList.remove('show');
+            }
+        }
+
+        // Reset navbar state on various events
+        window.addEventListener('load', resetNavbarState);
+        window.addEventListener('pageshow', resetNavbarState);
+        window.addEventListener('focus', resetNavbarState);
+        
+        // Reset navbar state when returning to the page
+        document.addEventListener('visibilitychange', function() {
+            if (!document.hidden) {
+                setTimeout(resetNavbarState, 100);
+            }
+        });
+    </script>
+    
+    <script>
+        // Google Sheets API configuration
+        const SHEET_ID = '13KmdMpme5RkGczWNsdEGOcH106pqYQiygTlpxDV_WNE';
+        const API_KEY = 'AIzaSyCLLyDickcYoTyOh8wIWf02_jfFsHEx2rw'; // This is your unrestricted API key
+        
+        document.getElementById('verifyForm').addEventListener('submit', async function(e) {
+            e.preventDefault();
+            
+            const certificateNumber = document.getElementById('certificateNumber').value;
+            const loadingSpinner = document.getElementById('loadingSpinner');
+            const errorMessage = document.getElementById('errorMessage');
+            
+            // Show loading spinner
+            loadingSpinner.style.display = 'block';
+            errorMessage.style.display = 'none';
+            
+            try {
+                // Construct the API URL
+                const apiUrl = `https://sheets.googleapis.com/v4/spreadsheets/${SHEET_ID}/values/'CERTIFICATE VERIFICATION'?key=${API_KEY}`;
+                console.log('Fetching from:', apiUrl);
+                
+                // Fetch data from Google Sheets
+                const response = await fetch(apiUrl);
+                
+                if (!response.ok) {
+                    const errorData = await response.json();
+                    console.error('API Error:', errorData);
+                    throw new Error(`API Error: ${errorData.error?.message || 'Unknown error'}`);
+                }
+                
+                const data = await response.json();
+                console.log('Received data:', data);
+                
+                if (!data.values) {
+                    console.error('No data found in sheet');
+                    throw new Error('No data found in sheet');
+                }
+                
+                const rows = data.values;
+                console.log('Looking for certificate:', certificateNumber);
+                
+                // Search for certificate (case-insensitive)
+                const certificate = rows.find(row => 
+                    row[2] && row[2].toString().toLowerCase() === certificateNumber.toLowerCase()
+                );
+                
+                if (certificate) {
+                    console.log('Certificate found:', certificate);
+                    // Certificate found, redirect to details page with data
+                    const params = new URLSearchParams({
+                        cert: certificateNumber
+                    });
+                    window.location.href = `certificate-details.html?${params.toString()}`;
+                } else {
+                    console.log('Certificate not found');
+                    // Certificate not found, show error
+                    errorMessage.textContent = 'Certificate not found. Please check the number and try again.';
+                    errorMessage.style.display = 'block';
+                }
+            } catch (error) {
+                console.error('Error:', error);
+                errorMessage.textContent = `Error: ${error.message}`;
+                errorMessage.style.display = 'block';
+            } finally {
+                loadingSpinner.style.display = 'none';
+            }
+        });
+    </script>
+</body>
+</html> 
